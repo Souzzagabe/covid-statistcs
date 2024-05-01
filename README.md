@@ -1,3 +1,5 @@
+Deploy para demonstração: https://covid-statistcs.vercel.app/
+
 <h1>Covid-19 Dashboard</h1>
 <p>Este é um projeto de painel de estatísticas da Covid-19 que exibe informações sobre casos, mortes, recuperados e casos críticos, tanto a nível global quanto específico para o Brasil. O painel oferece a funcionalidade de alternar entre os idiomas inglês e português, bem como alternar entre os temas claro e escuro.</p>
 
