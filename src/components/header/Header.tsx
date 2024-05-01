@@ -5,16 +5,10 @@ import { BsLightbulbOffFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { FaVirusCovid } from "react-icons/fa6";
 import LanguageSwitcher from "../../components/LanguageSwitcher";
-import { useState } from "react";
 
 const Header = () => {
   const { toggleTheme, theme } = useAppContext();
-  const {
-    t,
-    i18n: { language },
-  } = useTranslation();
-
-  const [lang, setLang] = useState(language);
+  const { t } = useTranslation();
 
   return (
     <div className="max-w-[1100px] mx-auto">
