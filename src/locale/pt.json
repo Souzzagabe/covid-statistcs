@@ -1,0 +1,29 @@
+{
+    "translation": {
+      "header": "Estatísticas Covid-19",
+      "loading": "Carregando...",
+      "error": "Erro ao buscar os dados",
+      "noResults": "Nenhum resultado encontrado para \"{searchTerm}\"",
+      "searchPlaceholder": "Pesquisar por país...",
+      "totalCases": "Total de Casos",
+      "totalDeaths": "Total de Mortes",
+      "totalRecovered": "Total de Recuperados",
+      "totalActiveCases": "Total de Casos Ativos",
+      "totalCriticalCases": "Total de Casos Críticos",
+      "totalTests": "Total de Testes Realizados",
+      "searchInfo": "Pesquise o nome do país em inglês.",
+      "brStatisticsLink": "Para visualizar as estatísticas dos estados brasileiros, clique aqui!",
+      "brStatisticsLink2": "Para visualizar as estatísticas dos estados brasileiros, clique aqui!",
+      "searchPlaceholder2": "Pesquisar por estado...",
+      "searchInfo2": "Pesquise por um estado."
+    },
+    "brStatistics": {
+      "header": "Estatísticas Covid-19",
+      "loading": "Carregando...",
+      "error": "Erro ao buscar os dados",
+      "noResults": "Nenhum resultado encontrado para \"{searchTerm}\"",
+      "searchPlaceholder2": "Pesquisar por estado...",
+      "searchInfo2": "Pesquise por um estado."
+    }
+  }
+  

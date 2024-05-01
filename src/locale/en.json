@@ -1,0 +1,28 @@
+{
+  "translation": {
+    "header": "Covid-19 Statistics",
+    "loading": "Loading...",
+    "error": "Error fetching data",
+    "noResults": "No results found for \"{searchTerm}\"",
+    "searchPlaceholder": "Search by country...",
+    "totalCases": "Total Cases",
+    "totalDeaths": "Total Deaths",
+    "totalRecovered": "Total Recovered",
+    "totalActiveCases": "Total Active Cases",
+    "totalCriticalCases": "Total Critical Cases",
+    "totalTests": "Total Tests",
+    "searchInfo": "Search the country name in English.",
+    "searchPlaceholder2": "Search by state...",
+    "searchInfo2": "Search the state name in English.",
+    "brStatisticsLink": "To view statistics for Brazilian states, click here!",
+    "brStatisticsLink2": "To view statistics for Brazilian states, click here!"
+},
+  "brStatistics": {
+    "header": "Covid-19 Statistics in Brazil",
+    "loading": "Loading...",
+    "error": "Error fetching data",
+    "noResults": "No results found for \"{searchTerm}\"",
+    "searchPlaceholder2": "Search by state...",
+    "searchInfo2": "Search the state name in English."
+  }
+}
