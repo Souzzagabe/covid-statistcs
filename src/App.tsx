@@ -1,10 +1,8 @@
 // App.tsx
-import { Route, Routes } from "react-router-dom";
-import Statistics from "./pages/Statistics";
 import Header from "./components/header/Header";
 import { useAppContext } from "./contexts/useAppContext";
 import Footer from "./components/footer/Footer";
-import BrStatistics from "./pages/BrStatitics";
+import Home from "./pages/Home";
 
 function App() {
   const { theme } = useAppContext();
@@ -18,10 +16,7 @@ function App() {
       }`}
     >
       <Header />
-      <Routes>
-        <Route path="/" element={<Statistics />} />
-        <Route path="/br" element={<BrStatistics />} />
-      </Routes>
+        <Home/>
       <Footer />
     </div>
   );
