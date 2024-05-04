@@ -4,8 +4,8 @@ const Footer = () => {
   const { theme } = useAppContext();
 
   return (
-    <div>
-      <p className={`text-black text-center font-bold ${theme === "dark" ? "text-white" : "text-black"}`}>
+    <div className="flex align-center justify-center p-5">
+      <p className={`text-black text-center font-bold h-8 ${theme === "dark" ? "text-white" : "text-black"}`}>
         ©
         <a
           className="text-red-400"

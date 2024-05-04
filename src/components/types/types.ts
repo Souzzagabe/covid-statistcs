@@ -25,12 +25,9 @@ export interface CardData {
   totalActiveCases: number | null;
   totalCriticalCases: number | null; 
   totalTests: number;
-  uid: number;
-  uf: string;
   state: string;
   deaths: number;
   suspects: number;
-  datetime: string;
   day: number;
   cases: number;
   refuses: number;

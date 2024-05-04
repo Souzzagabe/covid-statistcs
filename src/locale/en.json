@@ -11,18 +11,13 @@
     "totalActiveCases": "Total Active Cases",
     "totalCriticalCases": "Total Critical Cases",
     "totalTests": "Total Tests",
-    "searchInfo": "Search the country name in English.",
+    "searchInfo": "Search the country name.",
     "searchPlaceholder2": "Search by state...",
-    "searchInfo2": "Search the state name in English.",
+    "searchInfo2": "Search the state name in portuguese.",
     "brStatisticsLink": "To view statistics for Brazilian states, click here!",
-    "brStatisticsLink2": "To view statistics for Brazilian states, click here!"
-},
-  "brStatistics": {
-    "header": "Covid-19 Statistics in Brazil",
-    "loading": "Loading...",
-    "error": "Error fetching data",
-    "noResults": "No results found for \"{searchTerm}\"",
-    "searchPlaceholder2": "Search by state...",
-    "searchInfo2": "Search the state name in English."
-  }
+    "totalSuspects": "Total Suspects",
+    "brStatisticsLink2": "To view statistics for Brazilian states, click here!",
+    "states": "States",
+    "country": "Country"
+}
 }

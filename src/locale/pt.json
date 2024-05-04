@@ -15,15 +15,10 @@
       "brStatisticsLink": "Para visualizar as estatísticas dos estados brasileiros, clique aqui!",
       "brStatisticsLink2": "Para visualizar as estatísticas dos estados brasileiros, clique aqui!",
       "searchPlaceholder2": "Pesquisar por estado...",
-      "searchInfo2": "Pesquise por um estado."
-    },
-    "brStatistics": {
-      "header": "Estatísticas Covid-19",
-      "loading": "Carregando...",
-      "error": "Erro ao buscar os dados",
-      "noResults": "Nenhum resultado encontrado para \"{searchTerm}\"",
-      "searchPlaceholder2": "Pesquisar por estado...",
-      "searchInfo2": "Pesquise por um estado."
+      "searchInfo2": "Pesquise por um estado.",
+      "totalSuspects": "Total De Suspeitos",
+      "states": "Estados",
+      "country": "País"
     }
   }
   

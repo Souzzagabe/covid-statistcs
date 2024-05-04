@@ -19,9 +19,9 @@ const LanguageSwitcher = () => {
   return (
     <button onClick={handleChangeLanguage}>
       {lang === "en" ? (
-        <img src={brazilFlag} alt="Brazil Flag" className="w-8 h-8 hover:scale-110" />
+        <img src={brazilFlag} alt="Brazil Flag" className="w-8 h-8 duration-300 hover:scale-110 flex" />
       ) : (
-        <img src={usaFlag} alt="USA Flag" className="w-8 h-8 hover:scale-110" />
+        <img src={usaFlag} alt="USA Flag" className="w-8 h-8 duration-300 hover:scale-110 flex" />
       )}
     </button>
   );

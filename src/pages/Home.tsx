@@ -1,5 +1,4 @@
-// Home.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BsFillRocketFill } from "react-icons/bs";
 import { CardData } from "../components/types/types";
@@ -8,6 +7,7 @@ import {
   fetchBrStatistics,
   fetchWorldStatistics,
 } from "../services/fetchCovidService";
+import { CircularProgress } from "@mui/material";
 
 function Home() {
   const { t } = useTranslation();
@@ -15,73 +15,88 @@ function Home() {
   const [data, setData] = useState<CardData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
+  const [locale, setLocale] = useState<string>("br");
+  const [searchInfo, setSearchInfo] = useState<string>("searchInfo2");
 
-  const fetchData = async (type: "br" | "world") => {
-    setIsLoading(true);
-    setIsError(false);
-    try {
-      let response;
-      if (type === "br") {
-        response = await fetchBrStatistics();
-      } else if (type === "world") {
-        response = await fetchWorldStatistics();
+  useEffect(() => {
+    const fetchData = async (locale: string) => {
+      setIsLoading(true);
+      setIsError(false);
+      try {
+        let response;
+        if (locale === "br") {
+          response = await fetchBrStatistics();
+        } else if (locale === "world") {
+          response = await fetchWorldStatistics();
+        }
+        setData(response);
+      } catch (error) {
+        setIsError(true);
       }
-      console.log("Data received:", response);
-      setData(response);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      setIsError(true);
-    }
-
-    setIsLoading(false);
-  };
+      setIsLoading(false);
+    };
+    fetchData(locale);
+    
+    setSearchInfo(locale === "br" ? "searchInfo2" : "searchInfo");
+  }, [locale]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-2 md:p-20 flex-col relative">
-      <div className="max-w-4xl w-full md:w-90 bg-white rounded shadow-2xl p-8 md:p-20 border-2 border-gray-400">
-        <div className="md:hidden">
-          <h1 className="text-lg font-bold mb-8 text-center text-gray-900">
-            {t("header")}
-          </h1>
-        </div>
-
-        <div className="flex justify-center mb-4">
+    <div className="min-h-screen flex flex-col items-center justify-center p-1 md:p-20 relative">
+      <div className="max-w-4xl w-full md:w-90 px-8 pt-20 md:px-20 bg-gray-100 rounded-t-lg pb-0">
+        <h1 className="text-3xl font-bold mb-8 text-center text-gray-900 md:hidden">
+          {t("header")}
+        </h1>
+        <div className="flex justify-center mb-8">
           <input
             type="text"
             placeholder={t("searchPlaceholder")}
-            className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300 w-[500px] shadow-md"
+            className="border border-gray-300 rounded-md p-4 focus:outline-none focus:ring focus:border-blue-300 w-full md:w-[500px] shadow-md"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <p className="text-sm italic text-gray-400 mb-4 text-center">
-          {t("searchInfo")}
+        <p className="text-sm italic text-gray-600 mb-4 text-center">
+          {t(searchInfo)}
         </p>
-        <button
-          onClick={() => fetchData("br")}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md mb-2 mr-2"
-        >
-          {t("estados")}
-        </button>
-        <button
-          onClick={() => fetchData("world")}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md mb-2"
-        >
-          {t("país")}
-        </button>
-        {isLoading && <p className="font-bold text-center">{t("loading")}</p>}
-        {isError && (
-          <p className="font-bold text-center text-red-600">{t("error")}</p>
-        )}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {data?.map((item) => {
-            console.log("Country data:", item);
-            return <Card key={item.country} data={item} />;
-          })}
+        <div className="flex justify-center space-x-4 mb-8">
+          <button
+            onClick={() => setLocale("br")}
+            className={`${
+              locale === "br" ? "bg-blue-500" : "bg-gray-300"
+            } text-white px-8 py-4 rounded-md flex-grow text-lg font-medium focus:outline-none focus:ring focus:border-blue-300 shadow-lg transition-colors duration-300 hover:bg-blue-600`}
+          >
+            {t("states")}
+          </button>
+          <button
+            onClick={() => setLocale("world")}
+            className={`${
+              locale === "world" ? "bg-blue-500" : "bg-gray-300"
+            } text-white px-8 py-4 rounded-md flex-grow text-lg font-medium focus:outline-none focus:ring focus:border-blue-300 shadow transition-colors duration-300 hover:bg-blue-600`}
+          >
+            {t("country")}
+          </button>
         </div>
       </div>
+
+      <div className="max-w-4xl w-full md:w-90 bg-gray-100 rounded-b-lg p-8 md:p-20">
+        {isLoading ? (
+          <div className="flex justify-center items-center h-[400px]">
+            <CircularProgress />
+          </div>
+        ) : isError ? (
+          <p className="font-bold text-center text-red-600">{t("error")}</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {data.map((item) => (
+              <div className="mt-0" key={item.country}>
+                <Card data={item} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
       <button
-        className="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg"
+        className="fixed bottom-4 right-4 bg-blue-500 text-white p-3 rounded-full shadow-lg focus:outline-none focus:ring focus:border-blue-300 duration-300 hover:scale-110 flex"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
         <BsFillRocketFill size={24} />
