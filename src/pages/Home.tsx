@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BsFillRocketFill } from "react-icons/bs";
+import { CircularProgress } from "@mui/material";
 import { CardData } from "../components/types/types";
 import Card from "../utils/Card";
-import {
-  fetchBrStatistics,
-  fetchWorldStatistics,
-} from "../services/fetchCovidService";
-import { CircularProgress } from "@mui/material";
+import Search from "../utils/Search";
+import { fetchBrStatistics, fetchWorldStatistics } from "../services/fetchCovidService";
 
 function Home() {
   const { t } = useTranslation();
-  const [searchTerm, setSearchTerm] = useState<string>("");
   const [data, setData] = useState<CardData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
@@ -34,7 +31,10 @@ function Home() {
   
     fetchData(locale);
   }, [locale]);
-  
+
+  const handleSearchData = (filteredData: CardData[]) => {
+    setData(filteredData);
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-1 md:p-20 relative">
@@ -42,15 +42,7 @@ function Home() {
         <h1 className="text-3xl font-bold mb-8 text-center text-gray-900 md:hidden">
           {t("header")}
         </h1>
-        <div className="flex justify-center mb-8">
-          <input
-            type="text"
-            placeholder={t("searchPlaceholder")}
-            className="border border-gray-300 rounded-md p-4 focus:outline-none focus:ring focus:border-blue-300 w-full md:w-[500px] shadow-md"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
+        <Search locale={locale} onDataFound={handleSearchData} />
         <p className="text-sm italic text-gray-600 mb-4 text-center">
           {t(searchInfo)}
         </p>
