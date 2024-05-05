@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BsFillRocketFill } from "react-icons/bs";
 import { CardData } from "../components/types/types";
-import Card from "./Card";
+import Card from "../utils/Card";
 import {
   fetchBrStatistics,
   fetchWorldStatistics,
@@ -23,22 +23,18 @@ function Home() {
       setIsLoading(true);
       setIsError(false);
       try {
-        let response;
-        if (locale === "br") {
-          response = await fetchBrStatistics();
-        } else if (locale === "world") {
-          response = await fetchWorldStatistics();
-        }
+        const response = locale === "br" ? await fetchBrStatistics() : await fetchWorldStatistics();
         setData(response);
       } catch (error) {
         setIsError(true);
       }
       setIsLoading(false);
+      setSearchInfo(locale === "br" ? "searchInfo2" : "searchInfo");
     };
+  
     fetchData(locale);
-    
-    setSearchInfo(locale === "br" ? "searchInfo2" : "searchInfo");
   }, [locale]);
+  
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-1 md:p-20 relative">

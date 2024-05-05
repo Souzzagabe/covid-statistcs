@@ -32,3 +32,11 @@ export interface CardData {
   cases: number;
   refuses: number;
 }
+
+
+export interface SearchInputProps {
+  placeholder: string;
+  value: string;
+  data: CardData[];
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
