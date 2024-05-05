@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { fetchBrStatistics, fetchWorldStatistics } from "../services/fetchCovidService";
 import { CardData } from "../components/types/types";
+import { SearchInputProps } from "../components/types/types";
 
-interface Props {
-  locale: string;
-  onDataFound: (data: CardData[]) => void;
-}
-
-const Search: React.FC<Props> = ({ locale, onDataFound }) => {
+const Search: React.FC<SearchInputProps> = ({ locale, onDataFound }) => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(false);
