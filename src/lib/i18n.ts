@@ -13,5 +13,5 @@ i18next.use(initReactI18next).init({
             ...ptTranslations
         }
     },
-    lng: 'en',
+    lng: 'pt',
 });
